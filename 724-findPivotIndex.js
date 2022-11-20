@@ -40,8 +40,14 @@ Constraints:
 */
 
 const pivotIndex = function(nums) {
-
+    if (nums.slice(1).reduce((sum, ele) => sum + ele, 0) === 0) return 0;
+    for (let i = 1; i < nums.length; i++) {
+        if (i === nums.length - 1 && nums.slice(0,i).reduce((sum, ele) => sum + ele) === 0) {
+            return i;
+        }
+        else if (nums.slice(0,i).reduce((sum, ele) => sum + ele, 0) === nums.slice(i+1).reduce((sum, ele) => sum + ele, 0)) {
+            return i;
+        }
+    }
+    return -1;
 };
-
-// "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101"
-// "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"
