@@ -32,7 +32,7 @@ const climbStairs = function(n) {
         if (num === 1) return ['1'];
         const arr = climb(num - 1);
         let final = [...arr.map(ele => `${ele}1`), ...arr.map(ele => `1${ele}`)];
-        final = num % 2 === 0 ? [...final, '2'.repeat(num/2)] : final;
+        final = num % 2 === 0 ? [...final, '2'.repeat(num/2)] : num % 4 === 1 ? [...final, `${'2'.repeat(Math.floor(num/4))}1${'2'.repeat(Math.floor(num/4))}`] : final;
         return final;
     }
     let set = new Set(climb(n));
