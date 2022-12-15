@@ -26,3 +26,7 @@ const isAnagram = function(s, t) {
     const second = t.split('').sort().join('');
     return first === second;
 };
+
+
+let arr = new Array(3).fill(new Array(5).fill(1));
+console.log(arr);
