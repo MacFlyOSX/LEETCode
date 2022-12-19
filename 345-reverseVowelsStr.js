@@ -1,0 +1,36 @@
+/*
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+
+
+Example 1:
+
+Input: s = "hello"
+Output: "holle"
+Example 2:
+
+Input: s = "leetcode"
+Output: "leotcede"
+
+
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consist of printable ASCII characters.
+*/
+
+var reverseVowels = function(s) {
+    const vowels = 'aeiouAEIOU';
+    const arr = s.split('').filter(ele => vowels.includes(ele));
+    let j = arr.length - 1
+    let temp = s.split('');
+    for (let i = 0; i < s.length; i++) {
+        if (vowels.includes(s[i])) {
+            temp[i] = arr[j];
+            j--;
+        }
+    }
+    return temp.join('');
+};
