@@ -32,15 +32,22 @@ Constraints:
 digits does not contain any leading 0's.
 */
 
-const plusOne = function(digits) {
-    for (let i = digits.length - 1; i >= -1; i--) {
-        if (i === -1) return [1, ...digits];
-        if (digits[i] !== 9) {
-            digits[i] += 1;
-            return digits;
-        } else {
-            digits[i] = 0;
+function plusOne(digits) {
+    if (!digits.length) return [1];
+    let end = digits.length - 1;
+    let carry = true;
+
+    while (carry) {
+        carry = false;
+        if (end < 0) {
+            return [1, ...digits];
         }
+        if (digits[end] === 9) {
+            digits[end] = 0;
+            carry = true;
+            end--;
+        } else digits[end]++;
     }
+
     return digits;
-};
+}
